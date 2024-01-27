@@ -172,10 +172,6 @@ while running:
         obstacle_rect.x += 16
         obstacle_rect.height += 40
        
-    if player_rect.colliderect(obstacle_rect):
-        # Handle the collision (e.g., set active to False)
-        active = False
- 
     # Collision detection
     if player_rect.colliderect(obstacle_rect):
         active = False
