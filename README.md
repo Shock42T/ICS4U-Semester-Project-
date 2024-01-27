@@ -11,7 +11,7 @@ I want to have the project completed by June, I also might add more things to th
 
 Technology used: What are you using to make the project?
 
-I am using VS code as my IDE, I am using pygame to make this game.
+I am using VS code as my IDE, I am using pygame to make this game and using python to code the game.
 
 
 
