@@ -1,9 +1,6 @@
 import pygame
 import random
 
-
-
-
 pygame.init()
 
 
@@ -41,7 +38,6 @@ WIDTH, HEIGHT = background.get_size()
 WIDTH = 1000
 HEIGHT = 554
 
-
 player_x = 20
 player_y = 20
 y_change = 0
@@ -55,9 +51,7 @@ active = False
 score = 0
 character_frame = 0
 is_jumping = False
-SPAWN_INTERVAL = 150
 spawn_timer = 0
-
 
 platform_image = pygame.image.load('yellow_dot.jpg')
 
@@ -69,14 +63,12 @@ class Platform(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
 
-
 def add_platform():
     p_w = random.randint(10, 10)
     p_x = WIDTH + random.randint(100, 100)  # Start the platform off-screen to the right
     p_y = random.randint(200, 400)  # Adjust the y-coordinate range as needed
     platform = Platform(p_x, p_y, p_w)
     platform_group.add(platform)
-
 
 platform_group = pygame.sprite.Group()
 
@@ -87,7 +79,6 @@ for p in range(MAX_PLATFORMS):
     platform = Platform(p_x, p_y, p_w)
     platform_group.add(platform)
 
-
 # create temporary platforms
 screen = pygame.display.set_mode([WIDTH, HEIGHT])
 pygame.display.set_caption('endless runner')
@@ -95,7 +86,6 @@ fps = 60
 font = pygame.font.Font('freesansbold.ttf', 16)
 text_color = (0, 0, 0)
 timer = pygame.time.Clock()
-
 
 running = True
 while running:
@@ -116,7 +106,6 @@ while running:
     score_text = font.render(f"Score: {score}", True, text_color)
     screen.blit(score_text, (20, 20))
 
-
     if not active:
         # Draw "You died, press space to restart" message
             game_over_text = font.render("Press space to start/restart", True, text_color)
@@ -125,9 +114,7 @@ while running:
             screen.blit(title_text, (400, 20))
             pygame.display.flip()
    
-    
-
-    for event in pygame.event.get():
+        for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
         if event.type == pygame.KEYDOWN:
@@ -151,7 +138,6 @@ while running:
             if event.key == pygame.K_RIGHT or event.key == pygame.K_LEFT:
                 x_change = 0
 
-
     for i in range(len(obstacles)):
         if active:
             obstacles[i] -= obstacle_speed
@@ -159,12 +145,10 @@ while running:
             obstacles[i] = random.randint(470, 520)
             score += 1
 
-
-    # Increase difficulty based on the score
+     # Increase difficulty based on the score
     obstacle_speed = 2 + 0.1 * score
 
-
-    player_rect = pygame.Rect(player_x, player_y - character_images[character_frame].get_height(),
+     player_rect = pygame.Rect(player_x, player_y - character_images[character_frame].get_height(),
                               character_images[character_frame].get_width(), character_images[character_frame].get_height())
     player_rect = pygame.Rect(player_x, player_y - character_images[character_frame].get_height(),
                           4,30)  # Adjust the width and height as needed
@@ -172,18 +156,12 @@ while running:
     obstacle_rect_margin = 1 # Adjust the margin as needed
     obstacle_rects = [pygame.Rect(obstacle, HEIGHT - 60, 0, 0) for obstacle in obstacles]
 
-
-
-
     obstacle_rect0 = pygame.Rect(obstacles[0], HEIGHT - 60, 0, 0).inflate(-obstacle_rect_margin, -obstacle_rect_margin)
     obstacle_rect1 = pygame.Rect(obstacles[1], HEIGHT - 60, 0, 0).inflate(-obstacle_rect_margin, -obstacle_rect_margin)
     obstacle_rect2 = pygame.Rect(obstacles[2], HEIGHT - 60, 0, 0).inflate(-obstacle_rect_margin, -obstacle_rect_margin)
  
     for platform in platform_group:
      platform.rect.x -= platform_group_speed  # Move the platform to the left
-
-
-
 
     last_platform = platform_group.sprites()[-1]
     if last_platform.rect.right < WIDTH:
@@ -199,8 +177,6 @@ while running:
         # Handle the collision (e.g., set active to False)
         active = False
  
-
-
     # Collision detection
     if player_rect.colliderect(obstacle_rect):
         active = False
@@ -211,8 +187,7 @@ while running:
             player_y = platform.rect.top - character_images[character_frame].get_height()
             is_jumping = False
 
-
-    if player_rect.colliderect(obstacle_rect0) or player_rect.colliderect(obstacle_rect1) or player_rect.colliderect(obstacle_rect2):
+     if player_rect.colliderect(obstacle_rect0) or player_rect.colliderect(obstacle_rect1) or player_rect.colliderect(obstacle_rect2):
         active = False
    
     player_rect = pygame.Rect(player_x, player_y, 20, 20)
@@ -226,14 +201,12 @@ while running:
             y_change = 0
             player_y = obstacle_rect.y + obstacle_rect.height
 
-
     if 0 <= player_x <= 430:
         player_x += x_change
     if player_x < 0:
         player_x = 0
     if player_x > 430:
         player_x = 430
-
 
     if y_change > 0 or player_y < HEIGHT - 25:
         player_y -= y_change
@@ -244,9 +217,6 @@ while running:
         y_change = 0
         is_jumping = False
 
-
-   
-   
     pygame.display.flip()
 
 
