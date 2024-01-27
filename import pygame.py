@@ -50,8 +50,7 @@ platform_group_speed = 2
 active = False
 score = 0
 character_frame = 0
-is_jumping = False
-spawn_timer = 0
+
 
 platform_image = pygame.image.load('yellow_dot.jpg')
 
