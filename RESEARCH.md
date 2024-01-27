@@ -1,4 +1,4 @@
-Video: Create an endless runner game using Python and pygame
+Video: Create an endless runner game using Python and Pygame
 Source: https://www.youtube.com/watch?v=ZV8TNrwqG1Y&t=14s
 Reason: I wanted to learn how to add enemies and a score system
 
@@ -16,4 +16,4 @@ Reason: I wanted to learn how to implement sprites into my game
 
 Video: Pygame Tutorial #1 - Basic Movement and Key Presses
 Source: https://www.youtube.com/watch?v=i6xMBig-pP4&list=PLzMcBGfZo4-lp3jAExUCewBfMx3UZFkh5
-Reason: I wanted to learn how to move the player, and how to add the movement to the player
+Reason: I wanted to learn how to move the player, and how to add movement to the player
